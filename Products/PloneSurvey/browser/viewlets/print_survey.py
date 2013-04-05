@@ -1,4 +1,7 @@
-from zope.app.pagetemplate.viewpagetemplatefile import ViewPageTemplateFile
+try: #Plone 4.3
+    from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile
+except ImportError:
+    from zope.app.pagetemplate.viewpagetemplatefile import ViewPageTemplateFile
 from z3c.rml.rml2pdf import parseString
 from Products.Five.browser import BrowserView
 
