@@ -1,5 +1,6 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:five="http://namespaces.zope.org/five">
 
@@ -35,26 +36,65 @@
     interface="Products.Archetypes.interfaces.IMultiPageSchema" />
 
   <subscriber
+    zcml:condition="installed zope.container.interfaces.IObjectAddedEvent"
+    for="Products.PloneSurvey.content.Survey.Survey
+         zope.container.interfaces.IObjectAddedEvent"
+    handler="Products.PloneSurvey.content.events.createSurveyEventHandler" />
+
+  <subscriber
+    zcml:condition="installed zope.app.container.interfaces.IObjectAddedEvent"
     for="Products.PloneSurvey.content.Survey.Survey
          zope.app.container.interfaces.IObjectAddedEvent"
     handler="Products.PloneSurvey.content.events.createSurveyEventHandler" />
 
+
   <subscriber
+    zcml:condition="installed zope.container.interfaces.IObjectAddedEvent"
+    for="Products.PloneSurvey.content.SurveyDateQuestion.SurveyDateQuestion
+         zope.container.interfaces.IObjectAddedEvent"
+    handler="Products.PloneSurvey.content.events.createQuestionEventHandler" />
+
+  <subscriber
+    zcml:condition="installed zope.app.container.interfaces.IObjectAddedEvent"
     for="Products.PloneSurvey.content.SurveyDateQuestion.SurveyDateQuestion
          zope.app.container.interfaces.IObjectAddedEvent"
     handler="Products.PloneSurvey.content.events.createQuestionEventHandler" />
 
+
   <subscriber
+    zcml:condition="installed zope.container.interfaces.IObjectAddedEvent"
+    for="Products.PloneSurvey.content.SurveyMatrixQuestion.SurveyMatrixQuestion
+         zope.container.interfaces.IObjectAddedEvent"
+    handler="Products.PloneSurvey.content.events.createQuestionEventHandler" />
+
+  <subscriber
+    zcml:condition="installed zope.app.container.interfaces.IObjectAddedEvent"
     for="Products.PloneSurvey.content.SurveyMatrixQuestion.SurveyMatrixQuestion
          zope.app.container.interfaces.IObjectAddedEvent"
     handler="Products.PloneSurvey.content.events.createQuestionEventHandler" />
 
+
   <subscriber
+    zcml:condition="installed zope.container.interfaces.IObjectAddedEvent"
+    for="Products.PloneSurvey.content.SurveySelectQuestion.SurveySelectQuestion
+         zope.container.interfaces.IObjectAddedEvent"
+    handler="Products.PloneSurvey.content.events.createQuestionEventHandler" />
+
+  <subscriber
+    zcml:condition="installed zope.app.container.interfaces.IObjectAddedEvent"
     for="Products.PloneSurvey.content.SurveySelectQuestion.SurveySelectQuestion
          zope.app.container.interfaces.IObjectAddedEvent"
     handler="Products.PloneSurvey.content.events.createQuestionEventHandler" />
 
+
   <subscriber
+    zcml:condition="installed zope.container.interfaces.IObjectAddedEvent"
+    for="Products.PloneSurvey.content.SurveyTextQuestion.SurveyTextQuestion
+         zope.container.interfaces.IObjectAddedEvent"
+    handler="Products.PloneSurvey.content.events.createQuestionEventHandler" />
+
+  <subscriber
+    zcml:condition="installed zope.app.container.interfaces.IObjectAddedEvent"
     for="Products.PloneSurvey.content.SurveyTextQuestion.SurveyTextQuestion
          zope.app.container.interfaces.IObjectAddedEvent"
     handler="Products.PloneSurvey.content.events.createQuestionEventHandler" />
